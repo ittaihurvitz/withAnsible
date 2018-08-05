@@ -1,0 +1,25 @@
+pipeline {
+    environment {
+        MODE = "playground"
+    }
+    agent {label 'master'}
+    stages {
+        stage('build') {
+            steps {
+                echo "build stage"
+                //The yml file already exists in /var/lib/jenkins/CreateWinFolder.yml
+                sh 'ansible-playbook ~/CreateWinFolder.yml'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'whoami'
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh 'echo deploy stage'
+            }
+        }
+    }
+}

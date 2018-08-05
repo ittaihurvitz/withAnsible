@@ -1,0 +1,8 @@
+---
+- name: create folder on Windows
+  hosts: win
+  tasks:
+    - name: Create directory structure
+      win_file:
+        path: C:\Ansible\Temp\FromAnsible
+        state: directory
